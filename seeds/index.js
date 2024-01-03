@@ -3,6 +3,8 @@ const campground = require("../model/campground");
 const cities = require("./cities");
 const { descriptors, places } = require("./seedHelpers");
 
+console.log(descriptors);
+
 //connect to mongodb
 
 mongoose
@@ -12,12 +14,17 @@ mongoose
   })
   .catch((e) => console.log("error occured connecting to mongodb", e));
 
+const simple = (array) => {
+  return array[Math.floor(Math.random() * array.length)]
+};
 const seedsDB = async () => {
   await campground.deleteMany({});
-  for (let i = 0; i < 50; i++) {
+  for (let i = 0; i < 10; i++) {
     const ran = Math.floor(Math.random() * 1000);
     await new campground({
       Location: `${cities[ran].city}, ${cities[ran].state}`,
+      Title:`${simple(descriptors)} ${simple(places)}`
+
     }).save();
   }
 };
