@@ -15,16 +15,15 @@ mongoose
   .catch((e) => console.log("error occured connecting to mongodb", e));
 
 const simple = (array) => {
-  return array[Math.floor(Math.random() * array.length)]
+  return array[Math.floor(Math.random() * array.length)];
 };
 const seedsDB = async () => {
   await campground.deleteMany({});
-  for (let i = 0; i < 10; i++) {
+  for (let i = 0; i < 50; i++) {
     const ran = Math.floor(Math.random() * 1000);
     await new campground({
       Location: `${cities[ran].city}, ${cities[ran].state}`,
-      Title:`${simple(descriptors)} ${simple(places)}`
-
+      Title: `${simple(descriptors)} ${simple(places)}`,
     }).save();
   }
 };
