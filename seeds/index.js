@@ -27,4 +27,6 @@ const seedsDB = async () => {
     }).save();
   }
 };
-seedsDB();
+seedsDB().then(() => {
+  mongoose.connection.close();
+});

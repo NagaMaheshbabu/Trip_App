@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>New</title>
+  </head>
+  <body>
+    <form action="/campground/<%=campg._id%>?_method=PUT" method="post">
+      <label for="title">Title</label>
+      <input
+        type="text"
+        name="title"
+        id="title"
+        required
+        value="<%=campg.Title%>"
+      />
+      <label for="location">Location</label>
+      <input
+        type="text"
+        name="location"
+        id="location"
+        required
+        value="<%=campg.Location%>"
+      />
+      <button>Submit</button>
+    </form>
+    <a href="/campground"> Back to show page </a>
+  </body>
+</html>
