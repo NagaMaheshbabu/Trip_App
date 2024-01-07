@@ -1,30 +1,69 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>New</title>
-  </head>
-  <body>
+<% layout('Layout/boilerplate')%>
+<div class="row">
+  <h1 class="text-center">CampGround</h1>
+  <div class="col-6 offset-3">
     <form action="/campground/<%=campg._id%>?_method=PUT" method="post">
-      <label for="title">Title</label>
-      <input
-        type="text"
-        name="title"
-        id="title"
-        required
-        value="<%=campg.Title%>"
-      />
-      <label for="location">Location</label>
-      <input
-        type="text"
-        name="location"
-        id="location"
-        required
-        value="<%=campg.Location%>"
-      />
-      <button>Submit</button>
+      <div class="mb-3">
+        <label for="title" class="form-label">Title</label>
+        <input
+          class="form-control"
+          type="text"
+          name="title"
+          id="title"
+          required
+          value="<%=campg.Title%>"
+        />
+      </div>
+      <div class="mb-3">
+        <label for="price" class="form-label">Price*</label>
+        <div class="input-group mb-3">
+          <span class="input-group-text" id="price-label">$</span>
+          <input
+            type="text"
+            class="form-control"
+            value="<%=campg.Price%>"
+            aria-label="price"
+            aria-describedby="price-label"
+            id="price"
+            name="price"
+          />
+        </div>
+      </div>
+      <div class="mb-3">
+        <label for="Image" class="form-label">Image*</label>
+        <input
+          class="form-control"
+          type="text"
+          name="image"
+          id="Image"
+          required
+          value="<%=campg.image%>"
+        />
+      </div>
+      <div class="mb-3">
+        <label for="desc" class="form-label">Description*</label>
+        <input
+          class="form-control"
+          type="text"
+          name="description"
+          id="desc"
+          required
+          value="<%=campg.Description%>"
+        />
+      </div>
+      <div class="mb-3">
+        <label for="location" class="form-label">Location</label>
+        <input
+          class="form-control"
+          type="text"
+          name="location"
+          id="location"
+          required
+          value="<%=campg.Location%>"
+        />
+      </div>
+      <button class="btn btn-primary">Update</button>
     </form>
     <a href="/campground"> Back to show page </a>
-  </body>
-</html>
+  </div>
+</div>
