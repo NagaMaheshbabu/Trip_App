@@ -1,8 +1,10 @@
-<% layout('Layout/boilerplate')%>
+<% layout('Layout/boilerplate')%> <% const pageTitle = 'New' %>
+<title><%= pageTitle %></title>
+<%- include('../partials/common')%>
 <h1 class="text-center">New Campground</h1>
 <div class="row">
   <div class="col-6 offset-3">
-    <form action="/campground" method="post">
+    <form action="/campground" method="post" class="validate-form" novalidate>
       <div class="mb-3">
         <label for="title" class="form-label">Title</label>
         <input
@@ -12,6 +14,8 @@
           id="title"
           required
         />
+        <div class="valid-feedback">Looks good!</div>
+        <div class="invalid-feedback">Enter Title</div>
       </div>
       <div class="mb-3">
         <label for="location" class="form-label">Location</label>
@@ -22,6 +26,8 @@
           id="location"
           required
         />
+        <div class="valid-feedback">Looks good!</div>
+        <div class="invalid-feedback">Enter Location</div>
       </div>
       <div class="mb-3">
         <label for="price" class="form-label">Camp Price :</label>
@@ -35,7 +41,10 @@
             aria-describedby="price-label"
             id="price"
             name="price"
+            required
           />
+          <div class="valid-feedback">Looks good!</div>
+          <div class="invalid-feedback">Enter Price!</div>
         </div>
       </div>
       <div class="mb-3">
@@ -47,6 +56,8 @@
           id="Image"
           required
         />
+        <div class="valid-feedback">Looks good!</div>
+        <div class="invalid-feedback">Invalid Image URL!</div>
       </div>
       <div class="mb-3">
         <label for="desc" class="form-label">Description</label>
@@ -57,9 +68,35 @@
           id="desc"
           required
         />
+        <div class="valid-feedback">Looks good!</div>
+        <div class="invalid-feedback">Enter Description</div>
       </div>
-      <button class="btn btn-success">Submit</button>
+      <button class="btn btn-success submit">Submit</button>
     </form>
-    <a href="/campground" class="col mt-4"> Back to show page </a>
   </div>
 </div>
+
+<script>
+  (() => {
+    "use strict";
+
+    // Fetch all the forms we want to apply custom Bootstrap validation styles to
+    const forms = document.querySelectorAll(".validate-form");
+
+    // Loop over them and prevent submission
+    Array.from(forms).forEach((form) => {
+      form.addEventListener(
+        "submit",
+        (event) => {
+          if (!form.checkValidity()) {
+            event.preventDefault();
+            event.stopPropagation();
+          }
+
+          form.classList.add("was-validated");
+        },
+        false
+      );
+    });
+  })();
+</script>

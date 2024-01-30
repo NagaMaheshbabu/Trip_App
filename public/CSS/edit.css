@@ -1,0 +1,31 @@
+
+.back-div {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background-color: #efe8e8;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.back-div:hover {
+  background-color: #dcc9c9;
+}
+.update,
+.submit {
+  margin-bottom: 20px;
+}
+.btns {
+  display: flex;
+  width: 200px;
+  justify-content: space-around;
+}
+.img:hover{
+  transform: translateZ(10px)
+  
+}
+.fa-trash{
+  position: relative;
+  right: 3px;
+}
+

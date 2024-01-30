@@ -1,17 +1,28 @@
 <% layout('Layout/boilerplate')%>
-<h1>Campground : <%= camp.Title%></h1>
-<h2>Location : <%= camp.Location%></h2>
-<img
-  style="width: 300px; border-radius: 10px"
-  src="<%=camp.image%>"
-  alt="failed"
-/>
-<p><%=camp.Description%></p>
-<p>$<%=camp.Price%></p>
-<a href="/campground/<%=camp._id%>/edit"
-  ><button class="btn btn-primary mb-3">Edit</button></a
->
-<form action="/campground/<%=camp._id%>?_method=DELETE" method="post">
-  <button class="btn btn-danger">Delete</button>
-</form>
-<a href="/campground">back to show page</a>
+<% const pageTitle = 'Show' %>
+<title><%= pageTitle %></title>
+<%- include('../partials/common')%>
+
+<div class="row">
+  <div class="col-6 offset-3">
+    <div class="card"">
+      <img src="<%=camp.image%>" class="card-img-top img" style="height: 250px;" alt="...">
+      <div class="card-body">
+        <h4 class="card-title"><%=camp.Title%></h4>
+        <p class="text-muted"><i class="fas fa-map-marker-alt" style="margin-right: 5px;"></i><%= camp.Location%></p>
+        <p>$<%=camp.Price%></p>
+        <p class="card-text"><%=camp.Description%></p>
+       <div class="btns">
+        <a href="/campground/<%=camp._id%>/edit" class="btn btn-primary"><i class="fas fa-edit"></i>
+          Edit</a>
+        <form action="/campground/<%=camp._id%>?_method=DELETE" method="post">
+          <button class="btn btn-danger"><i class="fas fa-trash"></i>Delete</button>
+        </form>
+       </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+

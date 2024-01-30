@@ -1,0 +1,33 @@
+.main {
+  box-shadow: none;
+  background-color: red;
+}
+.container {
+  border-radius: 5px;
+}
+.main-div {
+  background-color: rgb(247, 244, 244);
+  transition: box-shadow 300ms ease-in-out;
+}
+.main-div:hover {
+  border-radius: 5px;
+  box-shadow: 2px 2px 35px #eae3e3, -2px -2px 35px #eae3e3;
+}
+.description {
+  width: 75%;
+}
+.fa-ellipsis-v {
+  position: relative;
+  top: 20px;
+  left: -30px;
+}
+#dropdown-text {
+ display: none;
+  position: absolute;
+  top: 50px;
+  border-radius: 3px;
+  right: 10px;
+  width: 100px;
+  height: 70px;
+  background-color: #868686;
+}

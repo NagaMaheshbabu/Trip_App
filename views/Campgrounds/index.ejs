@@ -1,29 +1,59 @@
-<% layout('Layout/boilerplate')%>
-<a href="/campground/new">New campground</a>
+<% layout('Layout/boilerplate')%> <% const pageTitle = 'Home Page' %>
+<title><%= pageTitle %></title>
+<a href="/campground/new"
+  ><button type="button" class="btn btn-outline-dark mb-3">
+    New campground
+  </button></a
+>
 <h3>campground data</h3>
 <% for (let c of Campgrounds) {%>
 <div class="card mb-2 vh-4">
-  <div class="d-flex">
-    <div class="col-md-4">
+  <div class="d-flex main-div">
+    <div class="col-md-4 container">
       <img
-        style="width: 300px; height: 200px; border-radius: 5px;"
+        style="width: 300px; height: 200px; border-radius: 5px"
         class="card-img-center mt-4"
-        alt="..."
+        alt="failed..."
         src="<%= c.image%>"
       />
     </div>
     <div class="col-mg-8">
       <div class="card-body">
         <h5 class="card-title"><%=c.Title%></h5>
-        <p class="card-text"><%=c.Description%></p>
+        <p class="card-text description"><%=c.Description%></p>
         <p class="card-text">
           <small class="text-muted"><%=c.Location%></small>
         </p>
-        <p class="card-text">Price : <%=`$${c.Price}`%></p>
+        <p class="card-text">
+          Price :<span class="text-danger"><%=`$${c.Price}`%></span>
+        </p>
         <a class="btn btn-primary" href="/campground/<%=c.id%>">View </a>
       </div>
+    </div>
+    <div class="icon-div">
+      <i class="fas fa-ellipsis-v"></i>
     </div>
   </div>
 </div>
 
 <%}%>
+<script>
+  const icons = document.querySelectorAll(".fa-ellipsis-v");
+  icons.forEach((icon) => {
+    var isButtonEnabled = true;
+    icon.addEventListener("click", () => {
+      const new_div = document.createElement("div");
+      if (isButtonEnabled) {
+        new_div.classList.add("dropdown");
+        new_div.innerHTML = "hello";
+        icon.appendChild(new_div);
+        console.log(isButtonEnabled);
+        isButtonEnabled = false;
+      } else {
+        console.log(isButtonEnabled);
+        isButtonEnabled = true;
+        icon.removeChild(new_div)
+      }
+    });
+  });
+</script>
